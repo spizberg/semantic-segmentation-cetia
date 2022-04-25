@@ -8,7 +8,7 @@ from typing import Tuple
 
 class ADE20K(Dataset):
     CLASSES = [
-        'wall'
+        'shoe'
     ]
 
     PALETTE = torch.tensor([
