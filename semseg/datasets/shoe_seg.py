@@ -12,8 +12,9 @@ class IDSHOES(Dataset):
     ]
 
     PALETTE = torch.tensor([
-        [254, 254, 254]
+        [220, 20, 60]
     ])
+
 
     def __init__(self, root: str, split: str = 'train', transform = None) -> None:
         super().__init__()
