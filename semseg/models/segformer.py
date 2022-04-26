@@ -23,4 +23,4 @@ if __name__ == '__main__':
     # model.load_state_dict(torch.load('checkpoints/pretrained/segformer/segformer.b0.ade.pth', map_location='cpu'))
     x = torch.zeros(1, 3, 512, 512)
     y = model(x)
-    print(y.shape)
+    print(y[y==0].numel())

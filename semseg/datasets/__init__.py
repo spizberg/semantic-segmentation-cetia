@@ -1,4 +1,5 @@
 from .ade20k import ADE20K
+from .shoe_seg import IDSHOES
 from .camvid import CamVid
 from .cityscapes import CityScapes
 from .pascalcontext import PASCALContext
@@ -21,6 +22,7 @@ from .facesynthetics import FaceSynthetics
 __all__ = [
     'CamVid',
     'CityScapes',
+    'IDSHOES',
     'ADE20K',
     'MHPv1',
     'MHPv2',

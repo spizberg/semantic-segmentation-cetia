@@ -113,7 +113,7 @@ class ResNetD(nn.Module):
 
 if __name__ == '__main__':
     model = ResNetD('18')
-    model.load_state_dict(torch.load('checkpoints/backbones/resnetd/resnetd18.pth', map_location='cpu'), strict=False)
+    model.load_state_dict(torch.load('checkpoints/backbones/resnetd18.pth', map_location='cpu'), strict=False)
     x = torch.zeros(1, 3, 224, 224)
     outs = model(x)
     for y in outs:

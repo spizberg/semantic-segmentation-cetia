@@ -36,7 +36,9 @@ def main(cfg, gpu, save_dir):
     valtransform = get_val_augmentation(eval_cfg['IMAGE_SIZE'])
 
     trainset = eval(dataset_cfg['NAME'])(dataset_cfg['ROOT'], 'train', traintransform)
+    # trainset = IDSHOES(dataset_cfg['ROOT'], 'train', traintransform)
     valset = eval(dataset_cfg['NAME'])(dataset_cfg['ROOT'], 'val', valtransform)
+    # valset = IDSHOES(dataset_cfg['ROOT'], 'val', valtransform)
     
     model = eval(model_cfg['NAME'])(model_cfg['BACKBONE'], trainset.n_classes)
     model.init_pretrained(model_cfg['PRETRAINED'])

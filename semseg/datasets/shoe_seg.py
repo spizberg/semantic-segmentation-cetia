@@ -6,19 +6,19 @@ from pathlib import Path
 from typing import Tuple
 
 
-class ADE20K(Dataset):
+class IDSHOES(Dataset):
     CLASSES = [
         'shoe'
     ]
 
     PALETTE = torch.tensor([
-        [120, 120, 120]
+        [254, 254, 254]
     ])
 
     def __init__(self, root: str, split: str = 'train', transform = None) -> None:
         super().__init__()
         assert split in ['train', 'val']
-        split = 'training' if split == 'train' else 'validation'
+        # split = 'training' if split == 'train' else 'validation'
         self.transform = transform
         self.n_classes = len(self.CLASSES)
         self.ignore_label = -1
@@ -39,12 +39,15 @@ class ADE20K(Dataset):
 
         image = io.read_image(img_path)
         label = io.read_image(lbl_path)
+        # label = label.where(label != 254, torch.tensor(1))
         
         if self.transform:
             image, label = self.transform(image, label)
-        return image, label.squeeze().long() - 1
+            label = label.squeeze().long() - 1
+            label = label.where(label != 254, torch.tensor(0))
+        return image, label
 
 
 if __name__ == '__main__':
     from semseg.utils.visualize import visualize_dataset_sample
-    visualize_dataset_sample(ADE20K, '/home/sithu/datasets/ADEChallenge/ADEChallengeData2016')
+    visualize_dataset_sample(IDSHOES, '/home/sithu/datasets/ADEChallenge/ADEChallengeData2016')
